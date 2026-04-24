@@ -1,0 +1,276 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background: black;
+  color: white;
+}
+
+/* 🌌 STAR CANVAS /
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/ SECTIONS /
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  transition: background 1s ease;
+}
+
+/ 🌅 Gradients /
+.hero { background: transparent; }
+.soft { background: linear-gradient(#0f2027, #203a43, #2c5364); }
+.bright { background: linear-gradient(#ff758c, #ff7eb3); }
+
+/ ✨ TEXT /
+h1, h2 { font-weight: 600; }
+p { max-width: 320px; line-height: 1.6; }
+
+.typewriter {
+  font-size: 22px;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/ 💖 BUTTON /
+button {
+  margin-top: 30px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  box-shadow: 0 0 20px #ff4d6d;
+  cursor: pointer;
+}
+
+/ 💎 CARDS /
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+/ 💫 FADE /
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/ 💖 HEART PARTICLES /
+.heart {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: floatUp 4s linear forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: pink;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before { top: -5px; left: 0; }
+.heart::after { left: -5px; top: 0; }
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/14/audio_0b1f3e6c0d.mp3">
+</audio>
+
+<!-- 🌌 HERO -->
+<section class="hero">
+  <div id="text1" class="typewriter"></div>
+  <div id="text2" class="typewriter" style="margin-top:10px;"></div>
+  <button onclick="startExperience()">👉 Enter my heart</button>
+</section>
+
+<!-- 💌 -->
+<section class="soft fade">
+  <h2>When you're not okay…</h2>
+  <p>
+    I feel it, even when you don’t say anything.<br><br>
+    Your silence gets heavy… like something’s missing.<br><br>
+    And honestly… nothing feels right when you're upset.
+  </p>
+</section>
+
+<!-- 🥀 -->
+<section class="soft fade">
+  <h2>The part where I messed up</h2>
+  <p>
+    I won’t make excuses.<br><br>
+    I messed up… and I know it hurt you.<br><br>
+    And that matters more to me than being right ever could.
+  </p>
+</section>
+
+<!-- 😄 -->
+<section class="bright fade">
+  <h2>Because you look better smiling 😄</h2>
+  <p>
+    I know I’m annoying… but I’m YOUR annoying 😌<br><br>
+    Being mad at me doesn’t suit you…<br><br>
+    You miss me a little. Don’t lie 🤭
+  </p>
+</section>
+
+<!-- 💖 -->
+<section class="bright fade">
+  <h2>Why you're not replaceable</h2>
+  <div class="cards">
+    <div class="card">Your smile > everything</div>
+    <div class="card">You make normal days feel special</div>
+    <div class="card">You’re my choice—even on my worst days</div>
+    <div class="card">It’s you. Still you. Always you.</div>
+  </div>
+</section>
+
+<!-- 🎮 -->
+<section class="soft fade">
+  <button onclick="showLove()">👉 Press this if you still have a tiny soft corner for me 🥺</button>
+</section>
+
+<!-- 🌸 -->
+<section class="soft fade">
+  <p>
+    I don’t need perfect moments.<br>
+    I don’t need everything to go right.<br><br>
+    I just need you… and one more chance.
+  </p>
+</section>
+
+<script>
+/ ✨ TYPEWRITER /
+function typeText(el, text, speed=40) {
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      el.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+typeText(document.getElementById("text1"),
+"Out of 8 billion people… I still messed things up with my favorite one.");
+
+setTimeout(()=>{
+  typeText(document.getElementById("text2"),
+  "So I made this… just for you.");
+},2500);
+
+/ 🎵 MUSIC START /
+function startExperience(){
+  document.getElementById("music").play();
+  window.scrollTo({top: window.innerHeight, behavior:"smooth"});
+}
+
+/ 💫 SCROLL ANIMATION /
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+});
+document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
+
+/ 💖 HEART BURST */
+function showLove(){
+  for(let i=0;i<40;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.style.left=Math.random()100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
+  }
+
+  setTimeout(()=>{
+    alert("I knew it… you could never stay mad at me forever 💕");
+  },500);
+}
+
+/ 🌌 STARFIELD */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = Array(120).fill().map(()=>({
+  x: Math.random()*canvas.width,
+  y: Math.random()*canvas.height,
+  r: Math.random()1.5
+}));
+
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="white";
+  stars.forEach(s=>{
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI2);
+    ctx.fill();
+  });
+}
+
+setInterval(drawStars,50);
+</script>
+
+</body>
+</html>
+``
